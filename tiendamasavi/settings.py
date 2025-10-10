@@ -61,6 +61,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, "template")],
+        #DIRS SIRVE PARA DECIRLE AL FLAMEWORK DONDE IR A BUSCAR LAS PLANTILLAS HTML QUE USAMOS EN VIEWS PRINCIPAL
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
