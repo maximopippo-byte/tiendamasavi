@@ -83,6 +83,7 @@ WSGI_APPLICATION = 'tiendamasavi.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
+        #Este es el motor de base de datos que vamos a usar(mongo db orange etc)
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
