@@ -5,7 +5,18 @@ from django.contrib import admin
 from vistaprevia.models import Categoria
 from vistaprevia.models import Producto
 
- 
+
+class Productoinline(admin.TabularInline):
+    model = Producto
+    extra = 0
+
+   
+
+class CategoriaAdmin(admin.ModelAdmin):
+    inlines = [Productoinline]
+
+"""admin register relaciona productoadmin con producto"""
+@admin.register(Producto)
 class ProductoAdmin(admin.ModelAdmin): 
 
     #fields =['producto','categoria', 'fecha_de_publicacion', 'imagen'] 
@@ -23,7 +34,7 @@ class ProductoAdmin(admin.ModelAdmin):
     #ej relacion va con cateroria y datos generales con producto....
     #lo que ponemos categoria,producto y los demas tienen que ser las variables que ponemos en models.py
 
-    list_display = ["producto","fecha_de_publicacion","imagen","color_de_Estado"]
+    list_display = ["producto","fecha_de_publicacion","imagen","color_de_Estado", "upper_case_name"]
     #list display lo que permite es mostrar la descripcion o lo que guardamos en las variables ej
     #tipo de producto, categoria, fehca de publicacion estado etc
 
@@ -36,8 +47,21 @@ class ProductoAdmin(admin.ModelAdmin):
     #nos virve para filtrar las cosas que queremos buscar en admin
 
     list_display_links=("producto","fecha_de_publicacion",)
-    #nos permite ingresar a modificar el producto desde la fecha de publicacion h otra cosa
- #el admin site register nos sirve para que aparezca esa opcion en el panel admin de la pagina web
 
-admin.site.register(Producto, ProductoAdmin)
-admin.site.register(Categoria)
+    @admin.display(description='Name')
+    def upper_case_name(self,obj):
+        return("%s %s" % (obj.producto, obj.estado)).upper()
+    
+        
+    #list display links nos permite ingresar a modificar el producto desde la fecha de publicacion h otra cosa
+
+    """admin display sirve para customziar el panel de administracion con list display
+    en este caso el metodo dice que toma los objetos(productos), sus nombres los pone en mayuscula
+     una ves que hacemos esta funcion upper_case_name la tenemos que agregar en list_displays """
+
+"""admin.site.register(Producto, ProductoAdmin)"""
+#el admin site register nos sirve para que aparezca esa opcion en el panel admin de la pagina web
+"""podes usar admin.site.register o usar el decorador para relacionar producto y producto admin
+ahora esta puesto el decorador"""
+admin.site.register(Categoria,CategoriaAdmin)
+"""admin.site.register(Categoria)"""

@@ -37,6 +37,12 @@ class Producto(models.Model):
     #producto, fecha de publicacion e imagen nos sirven como variables donde vamos a guardar los datos 
     #dichos anteriormente, cabe recalcar que los fields de admin se llenan con el mismo nombre
     #con categoria es lo mismo
+    """    categoria = models.ManyToManyField(Categoria) """
+    """categoria para n a m """
+    categoria = models.ForeignKey(
+        Categoria, blank=False,null=True,on_delete=models.CASCADE
+    )
+    """cuando tenemos categorias 1 a n usamos el on delete"""
 
 
     def color_de_Estado(self):
@@ -56,7 +62,7 @@ class Producto(models.Model):
 
        LO SACAMOS PORQUE PUSIMOS EN ADMIN LISTDISPLAY
     """
-    categoria = models.ManyToManyField(Categoria) 
+
 
 
  
