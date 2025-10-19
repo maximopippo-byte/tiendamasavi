@@ -23,4 +23,5 @@ urlpatterns = [
     path('vistaprevia', include('vistaprevia.urls')),
     path('admin/', admin.site.urls),
     path('accounts/', include('registration.backends.default.urls')),
+    path('usuarios/',include('usuarios.urls')),
     ]

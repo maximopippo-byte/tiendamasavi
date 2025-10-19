@@ -49,7 +49,7 @@ INSTALLED_APPS = [
 
     #mis apps
     "vistaprevia.apps.VistapreviaConfig",
-    "usuarios.apps.usuariosConfig",
+    "usuarios.apps.UsuariosConfig",
 ]
 
 MIDDLEWARE = [
