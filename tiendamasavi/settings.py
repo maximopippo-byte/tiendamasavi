@@ -32,6 +32,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+
+    'django.contrib.sites',
+    'registration',
     #apps por defecto
     'django.contrib.admin',
     'django.contrib.auth',
@@ -40,6 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #apps de terceros
+
+
+    
 
     #mis apps
     "vistaprevia.apps.VistapreviaConfig",
@@ -129,3 +135,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+ACCOUNT_ACTIVATION_DAYS = 7 # siete dias para logearte
+REGISTRATION_AUTO_LOGIN = True # 
+SITE_ID = 1  #determina cuantos sitios usamos en este registro(redux)

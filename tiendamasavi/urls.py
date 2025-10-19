@@ -22,5 +22,5 @@ urlpatterns = [
     #estas son mis urls principales de aca luego busca en la carpeta vista previa, el archivo urls
     path('vistaprevia', include('vistaprevia.urls')),
     path('admin/', admin.site.urls),
-    
+    path('accounts/', include('registration.backends.default.urls')),
     ]

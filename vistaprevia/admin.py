@@ -34,7 +34,7 @@ class ProductoAdmin(admin.ModelAdmin):
     #ej relacion va con cateroria y datos generales con producto....
     #lo que ponemos categoria,producto y los demas tienen que ser las variables que ponemos en models.py
 
-    list_display = ["producto","fecha_de_publicacion","imagen","color_de_Estado", "upper_case_name"]
+    list_display = ["producto","fecha_de_publicacion","imagen","Estado", "upper_case_name"]
     #list display lo que permite es mostrar la descripcion o lo que guardamos en las variables ej
     #tipo de producto, categoria, fehca de publicacion estado etc
 

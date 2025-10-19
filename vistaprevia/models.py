@@ -45,7 +45,7 @@ class Producto(models.Model):
     """cuando tenemos categorias 1 a n usamos el on delete"""
 
 
-    def color_de_Estado(self):
+    def Estado(self):
         if self.estado == "retirado":
             return format_html('<span style="color: #f00;"> {} </span>', self.estado,)
         if self.estado == "borrador":
