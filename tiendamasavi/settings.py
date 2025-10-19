@@ -49,6 +49,7 @@ INSTALLED_APPS = [
 
     #mis apps
     "vistaprevia.apps.VistapreviaConfig",
+    "usuarios.apps.usuariosConfig",
 ]
 
 MIDDLEWARE = [
@@ -136,7 +137,9 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-ACCOUNT_ACTIVATION_DAYS = 7 # siete dias para logearte
+#esto sirve para que cuando nosotros vamos el redux no me rdirija a profile y de error
+LOGIN_REDIRECT_URL = '/vistaprevia1'    #donde va cuando se logea el usuario
+LOGIN_URL = 'django.contrib.auth.views.login  '
+ACCOUNT_ACTIVATION_DAY = 7 # siete dias para logearte
 REGISTRATION_AUTO_LOGIN = True # 
 SITE_ID = 1  #determina cuantos sitios usamos en este registro(redux)
