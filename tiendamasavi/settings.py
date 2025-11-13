@@ -15,6 +15,7 @@ import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+#hace referencia a la raiz de nuestro proyecto BASE DIR
 
 
 # Quick-start development settings - unsuitable for production
@@ -131,6 +132,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATICFILES_DIRS= (os.path.join(BASE_DIR, "estilos_css(dev)"),)
+MEDIA_URL ="/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+#esto dice que los estilos los busca dentro de cualquier directorio que se llame static
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -143,3 +149,25 @@ LOGIN_URL = 'django.contrib.auth.views.login  '
 ACCOUNT_ACTIVATION_DAY = 7 # siete dias para logearte
 REGISTRATION_AUTO_LOGIN = True # 
 SITE_ID = 1  #determina cuantos sitios usamos en este registro(redux)
+
+
+if DEBUG:
+    MIDDLEWARE +=[
+        'debug_toolbar.middleware.DebugToolbarMiddleware',
+
+    ]
+    INSTALLED_APPS +=[
+        "debug_toolbar",
+    ]
+    INTERNAL_IPS =[
+    "127.0.0.1",
+    ]
+
+    #cada ves que ponemos += tenemos que poner [] porque le estamos agregando un elemento a la lista original
+    import mimetypes
+
+    mimetypes.add_type("application/javascript",".js",True)
+
+    DEBUG_TOOLBAR_CONFIG={
+        "INTERCEPT_REDIRECTS":False,
+    }

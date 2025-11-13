@@ -1,16 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HOLA JUAJUA JUA</title>
-</head>
-<body>
-    <h1>que tal {{nombresitio}}
+{% extends "layout.html" %}
+{% load static %}
 
-    </h1>
-    <h2> como vas</h2>
-    <h2> todo bien?</h2>
-    
-</body>
-</html>
+{% block contenedor %}
+    <p class="parrafo midisplay"><span style="color: #a0ff4c;">Hola</span></p>
+    <p class="parrafo2 midisplay" class="parrafo"><span style="color: #da5f0d;">Hola</span></p>
+
+    <a
+    href="https://www.bing.com/search?qs=HS&pq=a&sk=CSYN1AS7FT2LS2HS4&sc=25-1&pglt=299&q=aaaaa&cvid=42a6921a23f0451aa5774b95044eb753&gs_lcrp=EgRlZGdlKgYIABAAGEAyBggAEAAYQDIGCAEQABhAMgYIAhAAGEAyBggDEC4YQDIGCAQQABhAMgYIBRAAGEAyBggGEAAYQDIGCAcQABhAMgYICBAAGEDSAQgxMjAyajBqMagCCLACAQ&FORM=ANNTA1&PC=NMTS">Ir a....
+    </a>
+    <button class="button"> 
+        
+        xd
+        
+    </button>
+
+    <div style="margin-top:30px; padding-top: 30px;" class="div">Hola</div>
+    <div style="top: 100px;" class="div">que tal</div>
+
+{% endblock %}
+    <!-- con class englobamos estilos y con un nombre particular solo modificamos 1(linea 11) -->
