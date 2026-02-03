@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.db.models import Q
+from vistaprevia.models import Producto
 
 
 """
@@ -9,10 +11,15 @@ def index(reques):
 
 """
 
-def index(reques):
-    paraams = {"nombresitio":"librosonline"}
+from .models import Producto
 
-    return render(reques, "vistaprevia/index.html", paraams)
+def index(request):
+    productos = Producto.objects.all()
+    return render(request, "vistaprevia/index.html", {
+        "productos": productos
+    })
+
+
 #en index lo que sucede es que tenemos el render que señala que tenemos que usar un hhtml, y vistaprevia/index.html
 #nos indica donde el flamework tiene que ir a buscar el html
 #cabe recalcar que antes tenemos que modificar seting la parte de template espeficicamente DIRS
