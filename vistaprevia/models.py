@@ -33,6 +33,8 @@ class Producto(models.Model):
     producto = models.CharField(max_length= 200)
     fecha_de_publicacion = models.DateTimeField('Fecha de publicacion')
     imagen = models.ImageField(upload_to="producto/%Y/%m/%d", blank=True, null=True) 
+    precio = models.DecimalField(max_digits=8, decimal_places=2, default=0)
+
 
     #producto, fecha de publicacion e imagen nos sirven como variables donde vamos a guardar los datos 
     #dichos anteriormente, cabe recalcar que los fields de admin se llenan con el mismo nombre

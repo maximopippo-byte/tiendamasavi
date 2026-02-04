@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse
 from django.db.models import Q
 from vistaprevia.models import Producto
@@ -19,6 +19,22 @@ def index(request):
         "productos": productos
     })
 
+
+def shop(request):
+    productos = Producto.objects.all()
+    categorias = ["Hombre", "Mujer", "Accesorios", "Ofertas"]
+
+    context = {
+        "productos": productos,
+        "categorias": categorias
+    }
+
+    return render(request, "vistaprevia/shop.html", context)
+
+
+def producto_detalle(request, id):
+    producto = get_object_or_404(Producto, id=id)
+    return render(request, "vistaprevia/shop-single.html", {"producto": producto})
 
 #en index lo que sucede es que tenemos el render que señala que tenemos que usar un hhtml, y vistaprevia/index.html
 #nos indica donde el flamework tiene que ir a buscar el html
