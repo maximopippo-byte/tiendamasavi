@@ -24,8 +24,7 @@ urlpatterns = [
     #estas son mis urls principales de aca luego busca en la carpeta vista previa, el archivo urls
     path('vistaprevia', include('vistaprevia.urls')),
     path('admin/', admin.site.urls),
-    path('accounts/', include('registration.backends.default.urls')),
-    path('usuarios/',include('usuarios.urls')),
+    path('accounts/', include('allauth.urls'))
     ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 
 if settings.DEBUG:

@@ -27,21 +27,27 @@
         <div class="col-lg-9">
             <div class="row">
 
-                {% for producto in productos %}
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100">
-                        <img src="{{ producto.imagen.url }}" class="card-img-top" alt="{{ producto.nombre }}">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">{{ producto.producto }}</h5>
-                            <p class="card-text">{{ producto.descripcion|truncatewords:10 }}</p>
-                            <p class="fw-bold">${{ producto.precio }}</p>
-                            <a href="{% url 'producto_detalle' producto.id %}" class="btn btn-primary">Ver más</a>
-                        </div>
-                    </div>
-                </div>
-                {% empty %}
-                <p>No hay productos cargados.</p>
-                {% endfor %}
+
+        {% for producto in productos %}
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+            {% if producto.imagen %}
+                <img src="{{ producto.imagen.url }}" class="card-img-top" alt="{{ producto.nombre }}">
+            {% else %}
+                <img src="{% static 'img/placeholder.jpg' %}" class="card-img-top" alt="Sin imagen">
+            {% endif %}
+            <div class="card-body text-center">
+                <h5 class="card-title">{{ producto.producto }}</h5>
+                <p class="card-text">{{ producto.descripcion|truncatewords:10 }}</p>
+                <p class="fw-bold">${{ producto.precio }}</p>
+                <a href="{% url 'producto_detalle' producto.id %}" class="btn btn-primary">Ver más</a>
+            </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>No hay productos cargados.</p>
+        {% endfor %}
+
 
             </div>
         </div>

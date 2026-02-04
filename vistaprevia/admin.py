@@ -26,7 +26,7 @@ class ProductoAdmin(admin.ModelAdmin):
                             ["categoria"]
                             }),
               ("datos generales",{"fields":
-                                   ["producto", "fecha_de_publicacion", "imagen", "estado"] 
+                                   ["producto", "fecha_de_publicacion", "imagen", "estado","precio"] 
                                    },
                                         ),
                                             ]
