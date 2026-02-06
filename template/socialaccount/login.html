@@ -1,0 +1,17 @@
+
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>Iniciar sesión con Google</h2>
+
+<p>Estás por iniciar sesión con Google.</p>
+
+<form method="post">
+  {% csrf_token %}
+  <button type="submit" class="btn btn-danger">
+    Continuar con Google
+  </button>
+</form>
+
+<a href="{% url 'account_login' %}">Volver</a>
+{% endblock %}
