@@ -84,7 +84,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static_dev")]  # para desarrollo
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")        # para collectstatic en producción
-SECRET_KEY = os.environ.get("SECRET_KEY", "dev-inseguro-solo-local")
+SECRET_KEY = os.environ.get("SECRET_KEY", "031003100310MM0310MmmM")
 
 # ===================== MEDIA FILES ======================
 MEDIA_URL = '/media/'
