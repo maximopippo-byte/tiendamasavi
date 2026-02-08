@@ -30,7 +30,8 @@ class Producto(models.Model):
     #aca arriba nosotros ponemos la lista de estaods disponibles y abajo en la variable estado guardamos
     #el que elijamos, cabe recalcar que con choices eleijimos la lista
     estado= models.CharField(max_length=10, choices=APROBACION_PRODUCTO, default= "borrador")
-    producto = models.CharField(max_length= 200)
+    producto = models.CharField(max_length= 200, default="")
+    descripcion=  models.CharField(max_length= 200,default="")
     fecha_de_publicacion = models.DateTimeField('Fecha de publicacion')
     imagen = models.ImageField(upload_to="producto/%Y/%m/%d", blank=True, null=True) 
     precio = models.DecimalField(max_digits=8, decimal_places=2, default=0)
@@ -39,6 +40,11 @@ class Producto(models.Model):
         help_text="URL del producto en Mercado Libre",
         default=0
     )
+    stock_productos=models.IntegerField(default=0)
+
+ 
+    destacado = models.BooleanField(default=False)
+
 
     #producto, fecha de publicacion e imagen nos sirven como variables donde vamos a guardar los datos 
     #dichos anteriormente, cabe recalcar que los fields de admin se llenan con el mismo nombre
@@ -70,6 +76,12 @@ class Producto(models.Model):
     """
 
 
+class ProductoImagen(models.Model):
+    producto = models.ForeignKey(Producto, related_name='imagenes_secundarias', on_delete=models.CASCADE)
+    imagen_secundaria = models.ImageField(upload_to='productos/secundarias/%Y/%m/%d', blank=True, null=True)
+
+    def __str__(self):
+        return f"Imagen secundaria de {self.producto.producto}"
 
  
 

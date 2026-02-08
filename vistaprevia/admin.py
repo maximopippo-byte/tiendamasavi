@@ -3,8 +3,11 @@
 # Register your models here.
 from django.contrib import admin 
 from vistaprevia.models import Categoria
-from vistaprevia.models import Producto
+from vistaprevia.models import Producto, ProductoImagen
 
+class ProductoImagenInline(admin.TabularInline):
+    model = ProductoImagen
+    extra = 3
 
 class Productoinline(admin.TabularInline):
     model = Producto
@@ -26,7 +29,7 @@ class ProductoAdmin(admin.ModelAdmin):
                             ["categoria"]
                             }),
               ("datos generales",{"fields":
-                                   ["producto", "fecha_de_publicacion", "imagen", "estado","precio","link_mercadolibre"] 
+                                   ["producto", "fecha_de_publicacion", "imagen", "estado","precio","link_mercadolibre","descripcion","stock_productos","destacado"] 
                                    },
                                         ),
                                             ]
@@ -48,11 +51,14 @@ class ProductoAdmin(admin.ModelAdmin):
 
     list_display_links=("producto","fecha_de_publicacion",)
 
+
+    
+    inlines = [ProductoImagenInline]
+
+
     @admin.display(description='Name')
     def upper_case_name(self,obj):
-        return("%s %s" % (obj.producto, obj.estado)).upper()
-    
-        
+        return("%s %s" % (obj.producto, obj.estado)).upper()  
     #list display links nos permite ingresar a modificar el producto desde la fecha de publicacion h otra cosa
 
     """admin display sirve para customziar el panel de administracion con list display
@@ -65,3 +71,5 @@ class ProductoAdmin(admin.ModelAdmin):
 ahora esta puesto el decorador"""
 admin.site.register(Categoria,CategoriaAdmin)
 """admin.site.register(Categoria)"""
+
+

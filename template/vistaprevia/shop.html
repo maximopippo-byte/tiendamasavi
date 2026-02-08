@@ -1,60 +1,175 @@
 {% extends "layout.html" %}
+{% load socialaccount %}
 {% load static %}
 
 {% block contenedor %}
 
+  <!-- NAVBAR -->
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
-    <div class="container">
-        <a class="navbar-brand" href="{% url 'vistaprevia1' %}">Mi Tienda</a>
+      <nav class="navbar navbar-expand-lg bg-dark navbar-light d-none d-lg-block" id="templatemo_nav_top">
+        <div class="container text-light">
+            <div class="w-100 d-flex justify-content-between">
+                <div>
+                    <i class="fa fa-envelope mx-2"></i>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="mailto:masaviherramientas@gmail.com">masavi@company.com</a>
+                    <i class="fa fa-phone mx-2"></i>
+                    <a class="navbar-sm-brand text-light text-decoration-none" href="tel:911-6865-3916">911-6865-3916</a>
+                </div>
+                <div>
+
+                    <a class="text-light" href="https://www.instagram.com/masaviherramientas/" target="_blank"><i class="fab fa-instagram fa-sm fa-fw me-2"></i></a>
+
+                </div>
+            </div>
+        </div>
+    </nav>
+  <nav class="navbar navbar-expand-lg navbar-light shadow">
+  <div class="container d-flex justify-content-between align-items-center">
+
+    <!-- Logo -->
+    <a class="navbar-brand text-success logo h1 align-self-center" href="{% url 'vistaprevia1' %}">
+      MASAVI
+    </a>
+
+    <!-- Botón mobile -->
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+      data-bs-target="#main_nav" aria-controls="main_nav" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Menú -->
+    <div class="collapse navbar-collapse" id="main_nav">
+      <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'vistaprevia1' %}">Home</a>
+        </li>
+
+
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'tienda' %}">Tienda</a>
+        </li>
+
+
+
+      </ul>
+
+      <!-- Íconos derecha -->
+      <div class="d-flex align-items-center gap-3">
+        <a class="nav-icon text-decoration-none text-dark" href="{% provider_login_url 'google' %}">
+          <i class="fa fa-fw fa-user"></i>
+        </a>
+      </div>
+
     </div>
+  </div>
 </nav>
-
-<div class="container py-5">
+      <section class="py-5">
+  <div class="container">
     <div class="row">
 
-        <!-- Sidebar -->
-        <div class="col-lg-3">
-            <h4>Categorías</h4>
-            <ul class="list-group">
-                {% for categoria in categorias %}
-                    <li class="list-group-item">{{ categoria }}</li>
-                {% endfor %}
-            </ul>
+      <!-- Sidebar de categorías -->
+      <aside class="col-lg-3 mb-4">
+        <div class="category-box p-3 shadow-sm rounded">
+          <h5 class="fw-bold mb-3">Categorías</h5>
+          <ul class="list-unstyled category-list">
+            {% for categoria in categorias %}
+              <li class="mb-2">
+                <a class="category-link">{{ categoria }}</a>
+              </li>
+            {% endfor %}
+          </ul>
         </div>
+      </aside>
 
-        <!-- Productos -->
-        <div class="col-lg-9">
-            <div class="row">
-
-
-        {% for producto in productos %}
-        <div class="col-md-4 mb-4">
-            <div class="card h-100">
-            {% if producto.imagen %}
-                <img src="{{ producto.imagen.url }}" class="card-img-top" alt="{{ producto.nombre }}">
-            {% else %}
-                <img src="{% static 'img/placeholder.jpg' %}" class="card-img-top" alt="Sin imagen">
-            {% endif %}
-            <div class="card-body text-center">
-                <h5 class="card-title">{{ producto.producto }}</h5>
-                <p class="card-text">{{ producto.descripcion|truncatewords:10 }}</p>
-                <p class="fw-bold">${{ producto.precio }}</p>
-                <a href="{% url 'producto_detalle' producto.id %}" class="btn btn-primary">Ver más</a>
+      <!-- Productos -->
+      <div class="col-lg-9">
+        <div class="row g-4">
+          {% for producto in productos %}
+          <div class="col-md-6 col-lg-4">
+            <div class="card product-card h-100">
+              {% if producto.imagen %}
+                <img src="{{ producto.imagen.url }}" class="card-img-top product-img" alt="{{ producto.producto }}">
+              {% else %}
+                <img src="{% static 'img/placeholder.jpg' %}" class="card-img-top product-img" alt="Sin imagen">
+              {% endif %}
+              <div class="card-body text-center">
+                <h6 class="card-title fw-bold">{{ producto.producto }}</h6>
+                <p class="card-text small text-muted">{{ producto.descripcion|truncatewords:12 }}</p>
+                <p class="price mb-3">${{ producto.precio }}</p>
+                <a href="{% url 'producto_detalle' producto.id %}" class="btn btn-sm btn-outline-primary rounded-pill">
+                  Ver producto →
+                </a>
+              </div>
             </div>
-            </div>
+          </div>
+          {% empty %}
+            <p class="text-muted">No hay productos cargados.</p>
+          {% endfor %}
         </div>
-        {% empty %}
-        <p>No hay productos cargados.</p>
-        {% endfor %}
-
-
-            </div>
-        </div>
+      </div>
 
     </div>
-</div>
+  </div>
+</section>
 
+<footer class="bg-dark" id="tempaltemo_footer">
+        <div class="container">
+            <div class="row">
 
+                <div class="col-md-4 pt-5">
+                    <h2 class="h2 text-success border-bottom pb-3 border-light logo">MASAVI Shop</h2>
+                    <ul class="list-unstyled text-light footer-link-list">
+                        <li>
+                            <i class="fas fa-map-marker-alt fa-fw"></i>
+                            catamarcca 2818, Quilmes Oeste
+                        </li>
+                        <li>
+                            <i class="fa fa-phone fa-fw"></i>
+                            <a class="text-decoration-none" href="tel:911-6865-3916">911-6865-3916</a>
+                        </li>
+                        <li>
+                            <i class="fa fa-envelope fa-fw"></i>
+                            <a class="text-decoration-none" href="mailto:masaviherramientas@gmail.comm">masavi@company.com</a>
+                        </li>
+                    </ul>
+                </div>
 
+                
+
+            </div>
+
+            <div class="row text-light mb-4">
+                <div class="col-12 mb-3">
+                    <div class="w-100 my-3 border-top border-light"></div>
+                </div>
+                <div class="col-auto me-auto">
+                    <ul class="list-inline text-left footer-icons">
+                        
+                        <li class="list-inline-item border border-light rounded-circle text-center">
+                            <a class="text-light text-decoration-none" target="_blank" href="https://www.instagram.com/masaviherramientas/"><i class="fab fa-instagram fa-lg fa-fw"></i></a>
+                        </li>
+
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="w-100 bg-black py-3">
+            <div class="container">
+                <div class="row pt-2">
+                    <div class="col-12">
+                        <p class="text-left text-light">
+                            Copyright &copy; 2025 Masavi
+                            | Designed by <a rel="sponsored" href="#" target="_blank">max</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
 {% endblock %}

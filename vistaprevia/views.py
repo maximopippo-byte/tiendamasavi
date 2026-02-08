@@ -36,6 +36,9 @@ def producto_detalle(request, id):
     producto = get_object_or_404(Producto, id=id)
     return render(request, "vistaprevia/shop-single.html", {"producto": producto})
 
+def contacto(request,):
+    return render(request, "vistaprevia/contacto.html")
+
 #en index lo que sucede es que tenemos el render que señala que tenemos que usar un hhtml, y vistaprevia/index.html
 #nos indica donde el flamework tiene que ir a buscar el html
 #cabe recalcar que antes tenemos que modificar seting la parte de template espeficicamente DIRS
