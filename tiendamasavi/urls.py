@@ -29,7 +29,6 @@ urlpatterns = [
 
 if settings.DEBUG:
     import debug_toolbar
-    urlpatterns += [
-        path('__debug__/', include(debug_toolbar.urls))]
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     
 #esta parte de codigo dice que mientras estemos en modo DEBUG se agrega al urls las herramientas del debug toolbar
