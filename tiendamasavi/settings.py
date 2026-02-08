@@ -104,13 +104,13 @@ ACCOUNT_ACTIVATION_DAY = 7
 REGISTRATION_AUTO_LOGIN = True
 
 # ===================== DEBUG TOOLBAR ====================
-if DEBUG:
+"""if DEBUG:
     INSTALLED_APPS += ["debug_toolbar"]
     MIDDLEWARE += ["debug_toolbar.middleware.DebugToolbarMiddleware"]
     INTERNAL_IPS = ["127.0.0.1"]
     import mimetypes
     mimetypes.add_type("application/javascript", ".js", True)
-    DEBUG_TOOLBAR_CONFIG = {"INTERCEPT_REDIRECTS": False}
+    DEBUG_TOOLBAR_CONFIG = {"INTERCEPT_REDIRECTS": False}"""
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
