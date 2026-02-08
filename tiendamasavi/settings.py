@@ -4,8 +4,8 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-_p_5&fp*o6jf=h4h8i8n_$2p@o9@5_#+@ri5u_=j8!a@&@y=bj'
-DEBUG = True
-ALLOWED_HOSTS = []
+DEBUG = False
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     # apps por defecto
@@ -84,6 +84,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "static_dev")]  # para desarrollo
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")        # para collectstatic en producción
+SECRET_KEY = os.environ.get("SECRET_KEY", "dev-inseguro-solo-local")
 
 # ===================== MEDIA FILES ======================
 MEDIA_URL = '/media/'
