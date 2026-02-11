@@ -1,7 +1,7 @@
 from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse
 from django.db.models import Q
-from vistaprevia.models import Producto
+from vistaprevia.models import Producto, Categoria
 
 
 """
@@ -22,7 +22,7 @@ def index(request):
 
 def shop(request):
     productos = Producto.objects.all()
-    categorias = ["Hombre", "Mujer", "Accesorios", "Ofertas"]
+    categorias = Categoria.object.all()
 
     context = {
         "productos": productos,
