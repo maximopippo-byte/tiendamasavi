@@ -4,7 +4,7 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-_p_5&fp*o6jf=h4h8i8n_$2p@o9@5_#+@ri5u_=j8!a@&@y=bj'
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ["tiendamasavi-1.onrender.com"
                  ]
 DJANGO_SETTINGS_MODULE = "tiendamasavi.settings"
