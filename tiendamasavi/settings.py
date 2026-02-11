@@ -25,6 +25,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
+    'cloudinary', 
+    'cloudinary_storage',
 
     # mis apps
     "vistaprevia.apps.VistapreviaConfig",
@@ -114,3 +116,11 @@ REGISTRATION_AUTO_LOGIN = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'imagenesherramientas',
+    'API_KEY': '1299031082381293120',
+    'API_SECRET': '12381289392108312390213182038102',
+}
