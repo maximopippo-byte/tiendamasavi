@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.html import format_html 
 
+
 # Create your models here.
 #cada vez que agregamos una variable aca tenemos que hacer un python manage.py makemigrations
 #y luego python manage.py migrate
