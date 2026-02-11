@@ -22,7 +22,7 @@ def index(request):
 
 def shop(request):
     productos = Producto.objects.all()
-    categorias = Categoria.object.all()
+    categorias = Categoria.objects.all()
 
     context = {
         "productos": productos,
