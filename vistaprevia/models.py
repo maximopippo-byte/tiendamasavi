@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.html import format_html 
+from cloudinary.models import CloudinaryField
 
 
 # Create your models here.
@@ -34,7 +35,9 @@ class Producto(models.Model):
     producto = models.CharField(max_length= 200, default="")
     descripcion=  models.CharField(max_length= 200,default="")
     fecha_de_publicacion = models.DateTimeField('Fecha de publicacion')
-    imagen = models.ImageField(upload_to="producto/%Y/%m/%d", blank=True, null=True) 
+    """ imagen = models.ImageField(upload_to="producto/%Y/%m/%d", blank=True, null=True)""" 
+    imagen = CloudinaryField('imagen', blank=True, null=True)
+
     precio = models.DecimalField(max_digits=8, decimal_places=2, default=0)
     link_mercadolibre = models.URLField(
         max_length=500,
@@ -79,7 +82,9 @@ class Producto(models.Model):
 
 class ProductoImagen(models.Model):
     producto = models.ForeignKey(Producto, related_name='imagenes_secundarias', on_delete=models.CASCADE)
-    imagen_secundaria = models.ImageField(upload_to='productos/secundarias/%Y/%m/%d', blank=True, null=True)
+    """imagen_secundaria = models.ImageField(upload_to='productos/secundarias/%Y/%m/%d', blank=True, null=True)"""
+    imagen_secundaria = CloudinaryField('imagen_secundaria', blank=True, null=True)
+
 
     def __str__(self):
         return f"Imagen secundaria de {self.producto.producto}"
