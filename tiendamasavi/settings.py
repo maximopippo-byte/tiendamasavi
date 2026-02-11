@@ -4,7 +4,7 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-_p_5&fp*o6jf=h4h8i8n_$2p@o9@5_#+@ri5u_=j8!a@&@y=bj'
-DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = ["tiendamasavi-1.onrender.com"
                  ]
 DJANGO_SETTINGS_MODULE = "tiendamasavi.settings"
@@ -117,15 +117,7 @@ REGISTRATION_AUTO_LOGIN = True
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-STORAGES = {
-    "default": {
-        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",
-    },
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-}
-
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': os.environ.get("CLOUDINARY_CLOUD_NAME"),
