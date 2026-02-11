@@ -94,7 +94,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "031003100310MM0310MmmM")
 
 # ===================== MEDIA FILES ======================
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+"""MEDIA_ROOT = os.path.join(BASE_DIR, "media")"""
 
 # ===================== AUTH =============================
 LOGIN_REDIRECT_URL = '/vistaprevia1'
